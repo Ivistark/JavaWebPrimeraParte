@@ -38,14 +38,13 @@
                         <%
                             String nombre = request.getParameter("nombrePersona");
                             String edad = request.getParameter("edadPersona");
-                            if((nombre!="" && edad!="")&&(nombre!=null && edad!=null)){
-                            
-                            String saludar = "Hola " + nombre + " tienes " + edad + " años";
-                            out.println(saludar);
-                            }
-                            else{
-                            String saludar = "No hay datos";
-                            out.println(saludar);
+                            if ((nombre != "" && edad != "") && (nombre != null && edad != null)) {
+
+                                String saludar = "Hola " + nombre + " tienes " + edad + " años";
+                                out.println(saludar);
+                            } else {
+                                String saludar = "No hay datos";
+                                out.println(saludar);
                             }
                         %>
                     </div>
@@ -60,19 +59,28 @@
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Edad</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
-                        <td><%out.println(nombre);%></td>
-                        <td><%out.println(edad);%></td>
+                        <td name="FilaNombre">${nombre}></td>
+                        <td  name="FilaEdad" value="${nombre}"><%out.println(edad);%></td>
                     </tr>
-                    
                 </tbody>
             </table>
         </div>
+
+        <div class="container mt-5">
+            <div  class="btn-group">
+                <button type="button"class="btn btn-danger">Limpiar tabla</button>
+                <%=request.setAttribute("FilaNombre","")%>
+                <button type="button"class="btn btn-danger">Limpiar formulario</button>
+            </div>
+        </div>
+
+
     </body>
 
 </html>
